@@ -1,0 +1,133 @@
+body {
+    background-image: url('https://images.pexels.com/photos/533669/pexels-photo-533669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    text-align: center;
+    margin: 0%;
+    margin-top: 0%;
+}
+h2{
+    background-color:#d6ccc2 ;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+
+.EmptyRegBox{
+    color: red;
+    background-color: whitesmoke;
+    padding: 5px;
+    font-size:larger;
+    animation: hideAnimation 0s ease-in 4s;
+    animation-fill-mode: forwards;
+
+}
+.errorMessage{
+    margin-top: 20px;
+}
+.regTxtBx{
+    margin-bottom: 5px;
+}
+.buttons{
+    margin-top: 20px;
+}
+.RG{
+    background-color: #ccd5ae;
+    padding-top: 16px;
+    padding-bottom: 21px;
+    margin: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
+}
+.fReg{
+    height: 55px;
+    width: 300px;
+
+}
+.AddButtn{
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+    transform: translateY(50px) translateX(-80px)
+}
+.ResetButtn{
+    height: 50px;
+    width: 150px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    transform: translateY(-20px) translateX(80px)
+}
+.townText{
+    background-color: #ccd5ae;
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+}
+.townsname{
+    text-align: center;
+    height: 50px;
+    width: 150px;
+    font-size: 20px;
+}
+.town{
+    padding-bottom: 20px;
+    background-color: #ccd5ae;
+    padding-top: 20px;
+    width: 400px;
+    margin: auto;
+}
+.plate{
+    display: inline-block;
+}
+.div1{
+    display: inline-block;
+    background-color: #e9c46a;
+    width:auto ;
+    margin: 10px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 2.0px;
+
+
+}
+.div2{
+    display: inline-block;
+    background-color: #d6ccc2;
+    width:auto ;
+    margin: 10px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 2.0px;
+}
+.div3{
+    display: inline-block;
+    background-color: #fefae0;
+    width:auto ;
+    margin: 10px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 2.0px;
+
+}
+.myclass4{
+    display: inline-block;
+    background-color: #d4a373;
+    width:auto ;
+    margin: 10px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 2.0px;
+
+
+}
+.radiobuttons{
+    margin-top: 30px;
+}
+@keyframes hideAnimation {
+    to {
+      visibility: hidden;
+      width: 0;
+      height: 0;
+    }
+  }
