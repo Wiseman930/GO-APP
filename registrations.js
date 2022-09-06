@@ -52,9 +52,6 @@ module.exports = function registrationList(db){
         if (existingReg.count == 1 && upperReg != ''){
          emptyTextBox = 'Registration number exists'
         }
-        else if(existingReg.count == 0 && upperReg !=''){
-         emptyTextBox = ''
-        }
 
     }
     async function dispRegistration(takeCity){
@@ -69,10 +66,14 @@ module.exports = function registrationList(db){
         }
         else if(takeCity == 'stellenbosch'){
             selectCity = await db.manyOrNone("SELECT reg_numbers FROM reg_plates WHERE reg_numbers LIKE 'CK%'")
+
         }
         else if(takeCity == 'all' ){
             selectCity = await db.manyOrNone("SELECT reg_numbers FROM reg_plates")
         }
+
+    }
+    function returnSelectedReg(){
         return selectCity;
     }
     async function selectAllregs(){
@@ -82,9 +83,7 @@ module.exports = function registrationList(db){
     function returnForEmptyBox(){
         return emptyTextBox;
         }
-    function regExists(){
-        return existingReg
-    }
+
     return {
         takentext,
         returnForEmptyBox,
@@ -92,7 +91,7 @@ module.exports = function registrationList(db){
         resetAll,
         dispRegistration,
         selectAllregs,
-        regExists
+        returnSelectedReg
     }
 }
 

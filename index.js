@@ -43,7 +43,7 @@ app.use(
 
 app.get("/",async function(req, res){
   res.render("index", {
-    displayRegs: await myRegs.dispRegistration(),
+    displayRegs: await myRegs.returnSelectedReg(),
     displayError: myRegs.returnForEmptyBox()
 
   });

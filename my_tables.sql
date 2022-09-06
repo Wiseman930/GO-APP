@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS public.registration_towns
 
 );
 
-INSERT INTO public.registration_towns(
+/*INSERT INTO public.registration_towns(
 	my_town_name, town_code, id)
 	VALUES ('Cape Town', 'CA', 1);
 INSERT INTO public.registration_towns(
@@ -23,7 +23,7 @@ INSERT INTO public.registration_towns(
 	VALUES ('George', 'CJ', 3);
 INSERT INTO public.registration_towns(
 	my_town_name, town_code, id)
-	VALUES ('Stellenbosch', 'CK', 4);
+	VALUES ('Stellenbosch', 'CK', 4);*/
 
 Table: public.reg_plates
 

@@ -1,11 +1,17 @@
 body {
-    background-image: url('https://images.pexels.com/photos/533669/pexels-photo-533669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-image: url('https://images.pexels.com/photos/5054165/pexels-photo-5054165.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
     text-align: center;
     margin: 0%;
     margin-top: 0%;
+    text-align: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+    font-family: 'Courier New', Courier, monospace;
 }
 h2{
-    background-color:#d6ccc2 ;
+    background-color:#FFB703 ;
     padding-top: 20px;
     padding-bottom: 20px;
     margin: auto;
@@ -32,7 +38,7 @@ h2{
     margin-top: 20px;
 }
 .RG{
-    background-color: #ccd5ae;
+    background-color: #E5E5E5;
     padding-top: 16px;
     padding-bottom: 21px;
     margin: auto;
@@ -49,17 +55,19 @@ h2{
     height: 50px;
     width: 150px;
     font-size: 20px;
-    transform: translateY(50px) translateX(-80px)
+    transform: translateY(50px) translateX(-80px);
+    background-color: #FFB703;
 }
 .ResetButtn{
     height: 50px;
     width: 150px;
     margin-bottom: 20px;
     font-size: 20px;
-    transform: translateY(-20px) translateX(80px)
+    transform: translateY(-20px) translateX(80px);
+    background-color: #FFB703;
 }
 .townText{
-    background-color: #ccd5ae;
+    background-color: #E5E5E5;
     height: 50px;
     width: 150px;
     font-size: 20px;
@@ -72,7 +80,7 @@ h2{
 }
 .town{
     padding-bottom: 20px;
-    background-color: #ccd5ae;
+    background-color: #E5E5E5;
     padding-top: 20px;
     width: 400px;
     margin: auto;
@@ -82,12 +90,13 @@ h2{
 }
 .div1{
     display: inline-block;
-    background-color: #e9c46a;
+    background-color: #000000;
     width:auto ;
     margin: 10px;
     padding: 5px;
     border-style: solid;
     border-width: 2.0px;
+    color: #FFFFFF;
 
 
 }
