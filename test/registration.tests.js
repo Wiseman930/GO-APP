@@ -4,9 +4,6 @@ const displayAllRegies = require('../registrations');
 const pgp = require('pg-promise')()
 
 
-if (process.env.DATABASE_URL && !local) {
-    useSSL = true;
-  }
   const DATABASE_URL = process.env.DATABASE_URL || "postgresql://postgres:pg1999@localhost:5432/test";
 
   const config = {
@@ -16,7 +13,7 @@ if (process.env.DATABASE_URL && !local) {
     },*/
   };
 
-  const db = pgp(DATABASE_URL);
+  const db = pgp(config);
 
   describe('Greetings function', function(){
 
