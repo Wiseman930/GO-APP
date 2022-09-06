@@ -1,14 +1,4 @@
--- Table: public.reg_plates
 
--- DROP TABLE IF EXISTS public.reg_plates;
-
-CREATE TABLE IF NOT EXISTS public.reg_plates
-(
-    id integer NOT NULL,
-    reg_numbers text  NOT NULL,
-    CONSTRAINT reg_plates_pkey PRIMARY KEY (id),
-	FOREIGN KEY (id_town) REFERENCES registration_towns(id_town)
-)
 
 -- Table: public.registration_towns
 
@@ -18,9 +8,9 @@ CREATE TABLE IF NOT EXISTS public.registration_towns
 (
     my_town_name text NOT NULL,
     town_code text NOT NULL,
-    id integer NOT NULL,
-    CONSTRAINT registration_towns_pkey PRIMARY KEY (id)
-)
+    id serial NOT NULL primary key
+
+);
 
 INSERT INTO public.registration_towns(
 	my_town_name, town_code, id)
@@ -33,4 +23,15 @@ INSERT INTO public.registration_towns(
 	VALUES ('George', 'CJ', 3);
 INSERT INTO public.registration_towns(
 	my_town_name, town_code, id)
-	VALUES ('Stellenbosch', 'CK', 3);
+	VALUES ('Stellenbosch', 'CK', 4);
+
+-- Table: public.reg_plates
+
+-- DROP TABLE IF EXISTS public.reg_plates;
+
+create table reg_plates (
+	id serial not null primary key,
+	reg_numbers varchar(100) not null,
+	mytown_key int,
+FOREIGN KEY (mytown_key) REFERENCES registration_towns(id)
+);

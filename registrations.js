@@ -24,10 +24,20 @@ module.exports = function registrationList(db){
        storeRegs = await db.oneOrNone('SELECT reg_numbers FROM reg_plates WHERE reg_numbers=$1', [upperReg])
 
        if(storeRegs == null && regFormat.test(upperReg) == true && upperReg.includes('-')){
-            await db.none('INSERT INTO reg_plates(reg_numbers) values($1)', [upperReg])
+
+             const first2 = upperReg.slice(0, 2);
+             let storedFKey = await db.oneOrNone('SELECT id FROM registration_towns WHERE town_code=$1', [first2])
+             await db.none('INSERT INTO reg_plates(reg_numbers, mytown_key) values($1, $2)', [upperReg, storedFKey.id])
+             emptyTextBox = ''
         }
         else if(storeRegs == null && regFormat2.test(upperReg2) == true  && !upperReg2.includes('-')){
-            await db.none('INSERT INTO reg_plates(reg_numbers) values($1)', [upperReg])
+
+            const first2 = upperReg2.slice(0, 2);
+            let storedFKey = await db.oneOrNone('SELECT id FROM registration_towns WHERE town_code=$1', [first2])
+            await db.none('INSERT INTO reg_plates(reg_numbers, mytown_key) values($1, $2)', [upperReg2, storedFKey.id])
+            emptyTextBox = ''
+
+
         }
         if(storeRegs == null && regFormat.test(upperReg) == false && upperReg.includes('-')){
             emptyTextBox = 'Enter a vaild registration number'
@@ -73,13 +83,22 @@ module.exports = function registrationList(db){
     function returnForEmptyBox(){
         return emptyTextBox;
         }
+    function regExists(){
+        return existingReg
+    }
     return {
         takentext,
         returnForEmptyBox,
         errors,
         resetAll,
         dispRegistration,
-        selectAllregs
+        selectAllregs,
+        regExists
     }
 }
 
+/*       let storedFKey = await db.oneOrNone('SELECT id FROM registration_towns WHERE town_code=$1', [first2])
+
+       let grandCount = await db.one("SELECT MAX( id ) FROM reg_plates;")
+
+       let storedFKeyChild = await db.oneOrNone('SELECT mytown_key FROM reg_plates WHERE id=$1', [grandCount.max]) */

@@ -58,7 +58,7 @@ app.post("/reg_numbers", async function(req, res){
 
     res.redirect("/");
   });
-app.post("/reg_numbers", async function(req, res){
+app.post("/reg_numbers2", async function(req, res){
     let typeOfTown = req.body.cityType;
     await myRegs.dispRegistration(typeOfTown)
     res.redirect("/");
