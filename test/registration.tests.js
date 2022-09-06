@@ -16,7 +16,7 @@ if (process.env.DATABASE_URL && !local) {
     },*/
   };
 
-  const db = pgp(config);
+  const db = pgp(DATABASE_URL);
 
   describe('Greetings function', function(){
 
