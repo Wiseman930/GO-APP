@@ -20,7 +20,6 @@ module.exports = function registrationList(db){
         let upperReg2 = takeRegistration.toUpperCase()
         let regFormat2 = /^[CA|CL|CJ|CK]{2}\s[0-9]{6}$/
 
-
        storeRegs = await db.oneOrNone('SELECT reg_numbers FROM reg_plates WHERE reg_numbers=$1', [upperReg])
 
        if(storeRegs == null && regFormat.test(upperReg) == true && upperReg.includes('-')){
