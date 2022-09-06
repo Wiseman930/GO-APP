@@ -88,7 +88,7 @@ it("should an error message when the registration exists in the database", async
 
 });
 
-it("should an return registrations from the database acording to the city selected", async function(){
+it("should return registrations from the database acording to the city selected", async function(){
   let regs = displayAllRegies(db);
 
   await regs.takentext('CL 123-123')
