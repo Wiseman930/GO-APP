@@ -96,10 +96,10 @@ it("should return registrations from the database acording to the city selected"
   await regs.takentext('CK 459273')
 
 
-  //assert.deepEqual([{reg_numbers: 'CA 333333'}], await regs.dispRegistration('capetown'));
-  //assert.deepEqual([{reg_numbers: 'CL 123-123'}, {reg_numbers: 'CL 123456'}], await regs.dispRegistration('paarl'));
-  //assert.deepEqual([{reg_numbers: 'CJ 222-369'}], await regs.dispRegistration('george'));
-  //assert.deepEqual([{reg_numbers: 'CK 974613'}, {reg_numbers: 'CK 459273'}], await regs.dispRegistration('stellenbosch'));
+  assert.deepEqual([{reg_numbers: 'CA 333333'}], await regs.dispRegistration('capetown'));
+  assert.deepEqual([{reg_numbers: 'CL 123-123'}, {reg_numbers: 'CL 123456'}], await regs.dispRegistration('paarl'));
+  assert.deepEqual([{reg_numbers: 'CJ 222-369'}], await regs.dispRegistration('george'));
+  assert.deepEqual([{reg_numbers: 'CK 974613'}, {reg_numbers: 'CK 459273'}], await regs.dispRegistration('stellenbosch'));
 
 });
 

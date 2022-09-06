@@ -12,9 +12,11 @@ CREATE TABLE IF NOT EXISTS public.registration_towns
 
 );
 
-Table: public.reg_plates
 
- DROP TABLE IF EXISTS public.reg_plates;
+
+--Table: public.reg_plates
+
+-- DROP TABLE IF EXISTS public.reg_plates;
 
 create table reg_plates (
 	id serial not null primary key,

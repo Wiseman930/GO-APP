@@ -71,11 +71,9 @@ module.exports = function registrationList(db){
         else if(takeCity == 'all' ){
             selectCity = await db.manyOrNone("SELECT reg_numbers FROM reg_plates")
         }
+        return selectCity
+    }
 
-    }
-    function returnSelectedReg(){
-        return selectCity;
-    }
     async function selectAllregs(){
         selectCity = await db.manyOrNone("SELECT reg_numbers FROM reg_plates")
         return selectCity
@@ -91,7 +89,6 @@ module.exports = function registrationList(db){
         resetAll,
         dispRegistration,
         selectAllregs,
-        returnSelectedReg
     }
 }
 
