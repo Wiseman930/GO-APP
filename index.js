@@ -18,13 +18,17 @@ const DATABASE_URL = process.env.DATABASE_URL || "postgresql://postgres:pg1999@l
 
 const config = {
   connectionString: DATABASE_URL,
-  ssl: {
+ /* ssl: {
     rejectUnauthorized: false,
-  },
+  },*/
 };
 
 const db = pgp(config);
 const myRegs = registrationList(db)
+
+//routes folder
+const reggies = require('./routes/routes')
+const theRegs = reggies(myRegs)
 
 app.engine("handlebars", exphbs.engine({ defaultLayout: "main" }));
 app.use(
@@ -41,36 +45,13 @@ app.use(
   app.use(bodyParser.json());
 
 
-app.get("/",async function(req, res){
-  res.render("index", {
-    displayRegs: await myRegs.dispRegistration(),
-    displayError: myRegs.returnForEmptyBox()
+app.get("/", theRegs.mainDisp);
+app.post("/reg_numbers", theRegs.dispRegs );
 
-  });
-
-});
-app.post("/reg_numbers", async function(req, res){
-    let fromtextBox = req.body.regNumber;
-     await myRegs.errors(fromtextBox)
-     await myRegs.takentext(fromtextBox)
-     await myRegs.selectAllregs()
-    req.flash("errors", myRegs.returnForEmptyBox());
-
-    res.redirect("/");
-  });
-app.post("/reg_numbers2", async function(req, res){
-    let typeOfTown = req.body.cityType;
-    await myRegs.dispRegistration(typeOfTown)
-    res.redirect("/");
-  });
+app.post("/reg_numbers2", theRegs.cities );
 
 
-  app.post("/reset", async function(req, res){
-    await myRegs.resetAll()
-    await myRegs.dispRegistration()
-    req.flash("errors", myRegs.returnForEmptyBox());
-    res.redirect("/");
-  });
+  app.post("/reset", theRegs.resettingAll);
 
 let PORT = process.env.PORT || 3007;
 
