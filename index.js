@@ -1,3 +1,21 @@
+//create repo from github
+// create index.js
+//npm init -y
+//npm install -g nodemon.
+
+/*
+create a views folder in your express-intro project folder,
+create a layouts folder inside the views folder you just created,
+create a file called main.handlebars in the layouts folder
+add the text {{{body}}} to the main.handlebars file.
+*/
+
+/*
+app.get('/, function(req, res) {
+  res.render('index');
+});
+*/
+
 
 const express = require("express");  //npm install express
 const exphbs = require("express-handlebars"); //npm install --save express-handlebars
