@@ -37,3 +37,4 @@ INSERT INTO public.registration_towns(
 INSERT INTO public.registration_towns(
 	my_town_name, town_code, id)
 	VALUES ('Stellenbosch', 'CK', 4);
+
