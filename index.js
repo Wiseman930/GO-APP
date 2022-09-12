@@ -26,7 +26,6 @@ const config = {
 const db = pgp(config);
 const myRegs = registrationList(db)
 
-//routes folder
 const reggies = require('./routes/routes')
 const theRegs = reggies(myRegs)
 
