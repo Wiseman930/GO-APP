@@ -21,48 +21,6 @@ const pgp = require('pg-promise')()
     await db.none("delete from reg_plates")
     });
 
-it("should return error message when I insert invalid registration number with extra numbers", async function(){
-    let regs = displayAllRegies(db);
-
-    await regs.takentext('CA 1234567')
-
-    assert.equal('Enter a vaild registration number', await regs.returnForEmptyBox());
-
-});
-
-it("should return error message when I insert invalid registration number with less numbers", async function(){
-  let regs = displayAllRegies(db);
-
-  await regs.takentext('CL 12345')
-
-  assert.equal('Enter a vaild registration number', await regs.returnForEmptyBox());
-
-});
-it("should return error message when I insert invalid dahsed registration number with extra numbers", async function(){
-  let regs = displayAllRegies(db);
-
-  await regs.takentext('CK 123-4567')
-
-  assert.equal('Enter a vaild registration number', await regs.returnForEmptyBox());
-
-});
-it("should return error message when I insert invalid dahsed registration number with less characters", async function(){
-  let regs = displayAllRegies(db);
-
-  await regs.takentext('CL 123-45')
-
-  assert.equal('Enter a vaild registration number', await regs.returnForEmptyBox());
-
-});
-it("should return no error message when I insert the correct registration format", async function(){
-  let regs = displayAllRegies(db);
-
-  await regs.takentext('CK 555-555')
-
-  assert.equal('', await regs.returnForEmptyBox());
-
-});
-
 it("should return all the registration entered in textbox from my database", async function(){
   let regs = displayAllRegies(db);
 
@@ -75,17 +33,19 @@ it("should return all the registration entered in textbox from my database", asy
 
 });
 
-it("should an error message when the registration exists in the database", async function(){
+it("should not add a registration when it exists in the database", async function(){
   let regs = displayAllRegies(db);
 
   await regs.takentext('CL 123-123')
-  await regs.errors('CL 123-123')
+  await regs.takentext('CL 123-123')
+  await regs.takentext('CL 123-123')
 
-  assert.equal('Registration number exists', await regs.returnForEmptyBox());
+
+  assert.deepEqual([{reg_numbers: 'CL 123-123'}], await regs.selectAllregs())
 
 });
 
-it("should return registrations from the database acording to the city selected", async function(){
+it("should return registrations from the database when cape town city selected", async function(){
   let regs = displayAllRegies(db);
 
   await regs.takentext('CL 123-123')
@@ -97,8 +57,50 @@ it("should return registrations from the database acording to the city selected"
 
 
   assert.deepEqual([{reg_numbers: 'CA 333333'}], await regs.dispRegistration('Cape Town'));
+
+
+});
+it("should return registrations from the database when Paarl city selected", async function(){
+  let regs = displayAllRegies(db);
+
+  await regs.takentext('CL 123-123')
+  await regs.takentext('CL 123456')
+  await regs.takentext('CA 333333')
+  await regs.takentext('CJ 222-369')
+  await regs.takentext('CK 974613')
+  await regs.takentext('CK 459273')
+
+
   assert.deepEqual([{reg_numbers: 'CL 123-123'}, {reg_numbers: 'CL 123456'}], await regs.dispRegistration('Paarl'));
+
+
+});
+it("should return registrations from the database when George city is selected", async function(){
+  let regs = displayAllRegies(db);
+
+  await regs.takentext('CL 123-123')
+  await regs.takentext('CL 123456')
+  await regs.takentext('CA 333333')
+  await regs.takentext('CJ 222-369')
+  await regs.takentext('CK 974613')
+  await regs.takentext('CK 459273')
+
+
   assert.deepEqual([{reg_numbers: 'CJ 222-369'}], await regs.dispRegistration('George'));
+
+
+});
+it("should return registrations from the database when Stellenbosch city is selected", async function(){
+  let regs = displayAllRegies(db);
+
+  await regs.takentext('CL 123-123')
+  await regs.takentext('CL 123456')
+  await regs.takentext('CA 333333')
+  await regs.takentext('CJ 222-369')
+  await regs.takentext('CK 974613')
+  await regs.takentext('CK 459273')
+
+
   assert.deepEqual([{reg_numbers: 'CK 974613'}, {reg_numbers: 'CK 459273'}], await regs.dispRegistration('Stellenbosch'));
 
 });
