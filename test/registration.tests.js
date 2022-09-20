@@ -8,9 +8,6 @@ const pgp = require('pg-promise')()
 
   const config = {
     connectionString: DATABASE_URL,
-   /* ssl: {
-      rejectUnauthorized: false,
-    },*/
   };
 
   const db = pgp(config);
