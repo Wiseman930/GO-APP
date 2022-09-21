@@ -16,7 +16,6 @@ module.exports = function allRegistrationRoutes(myRegs){
 
         if( (regFormat.test(upperReg) == true || regFormat2.test(upperReg) == true || regFormat3.test(upperReg) == true || regFormat4.test(upperReg) == true)){
             await myRegs.takentext(upperReg)
-            req.flash("errors", '');
         }
         else if(!(regFormat.test(upperReg) == true || regFormat2.test(upperReg) == true || regFormat3.test(upperReg) == true || regFormat4.test(upperReg) == true)){
 
