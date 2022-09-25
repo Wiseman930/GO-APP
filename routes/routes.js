@@ -9,10 +9,10 @@ module.exports = function allRegistrationRoutes(myRegs){
   async function dispRegs(req, res){
           let fromtextBox = req.body.regNumber;
           let upperReg = fromtextBox.toUpperCase()
-          let regFormat = /^[CA|CL|CJ|CK]{2}\s[0-9]{3}\-[0-9]{3}$/
-          let regFormat2 = /^[CA|CL|CJ|CK]{2}\s[0-9]{6}$/
-          let regFormat3 = /^[CA|CL|CJ|CK]{2}\s[0-9]{4}$/
-          let regFormat4 = /^[CA|CL|CJ|CK]{2}\s[0-9]{3}\s[0-9]{3}$/
+          let regFormat = /^[CA|CL|CJ|CK]{2}\s[0-9]{3}\-[0-9]{3}$/ // CA 222-222
+          let regFormat2 = /^[CA|CL|CJ|CK]{2}\s[0-9]{6}$/ //CJ 123456
+          let regFormat3 = /^[CA|CL|CJ|CK]{2}\s[0-9]{4}$/ // CL 1234
+          let regFormat4 = /^[CA|CL|CJ|CK]{2}\s[0-9]{3}\s[0-9]{3}$/ //CA 123 123
 
         if( (regFormat.test(upperReg) == true || regFormat2.test(upperReg) == true || regFormat3.test(upperReg) == true || regFormat4.test(upperReg) == true)){
             await myRegs.takentext(upperReg)
